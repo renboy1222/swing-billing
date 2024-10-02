@@ -75,8 +75,6 @@ public class JPanelBilling extends javax.swing.JPanel implements MouseListener {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
-        jButtonUpdate = new javax.swing.JButton();
-        jButtonUpdate1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jTextFieldSearch = new javax.swing.JTextField();
@@ -174,28 +172,6 @@ public class JPanelBilling extends javax.swing.JPanel implements MouseListener {
         });
         jPanel8.add(jButtonNew);
 
-        jButtonUpdate.setIcon(new FlatSVGIcon("svg/edit.svg",24,24));
-        jButtonUpdate.setText("<html><center>Update<br><h4 style=\"color:red; padding:0; margin:0;\">Billing</h4></center></html>");
-        jButtonUpdate.setMargin(new java.awt.Insets(2, 2, 3, 2));
-        jButtonUpdate.setPreferredSize(new java.awt.Dimension(90, 40));
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButtonUpdate);
-
-        jButtonUpdate1.setIcon(new FlatSVGIcon("svg/edit.svg",24,24));
-        jButtonUpdate1.setText("<html><center>Print<br><h4 style=\"color:red; padding:0; margin:0;\">Billing</h4></center></html>");
-        jButtonUpdate1.setMargin(new java.awt.Insets(2, 2, 3, 2));
-        jButtonUpdate1.setPreferredSize(new java.awt.Dimension(90, 40));
-        jButtonUpdate1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdate1ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButtonUpdate1);
-
         jPanel2.add(jPanel8, java.awt.BorderLayout.SOUTH);
 
         jAPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -265,10 +241,6 @@ public class JPanelBilling extends javax.swing.JPanel implements MouseListener {
 
     }//GEN-LAST:event_jButtonNewActionPerformed
 
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-
-    }//GEN-LAST:event_jButtonUpdateActionPerformed
-
     private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
         String text = jTextFieldSearch.getText().trim();
         if (text.length() == 0) {
@@ -278,10 +250,6 @@ public class JPanelBilling extends javax.swing.JPanel implements MouseListener {
         }
     }//GEN-LAST:event_jTextFieldSearchKeyReleased
 
-    private void jButtonUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonUpdate1ActionPerformed
-
     private void jComboBoxFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFilterActionPerformed
         selectBillingData();
     }//GEN-LAST:event_jComboBoxFilterActionPerformed
@@ -290,8 +258,6 @@ public class JPanelBilling extends javax.swing.JPanel implements MouseListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.aldrin.billing.util.JAPanel jAPanel1;
     private javax.swing.JButton jButtonNew;
-    private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JButton jButtonUpdate1;
     private javax.swing.JComboBox<String> jComboBoxFilter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -393,7 +359,6 @@ public class JPanelBilling extends javax.swing.JPanel implements MouseListener {
                         p.setDescription(description);
 
 //                        this.product = p;
-                        jButtonUpdate.setEnabled(true);
                     }
 
                 }

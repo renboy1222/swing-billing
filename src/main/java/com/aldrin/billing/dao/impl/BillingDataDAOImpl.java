@@ -46,7 +46,7 @@ public class BillingDataDAOImpl extends DBConnection implements BillingDataDAO {
                     + "    INNER JOIN `invoice` \n"
                     + "        ON (`payment`.`InvoiceID` = `invoice`.`InvoiceID`)\n"
                     + "    INNER JOIN `customer` \n"
-                    + "        ON (`invoice`.`CustomerID` = `customer`.`CustomerID`)  ORDER BY `invoice`.`InvoiceID` ASC ";
+                    + "        ON (`invoice`.`CustomerID` = `customer`.`CustomerID`)  ORDER BY `invoice`.`InvoiceID` DESC ";
             getDBConn();
             Statement st = getCon().createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -666,7 +666,7 @@ public class BillingDataDAOImpl extends DBConnection implements BillingDataDAO {
                     + "    INNER JOIN `invoice` \n"
                     + "        ON (`payment`.`InvoiceID` = `invoice`.`InvoiceID`)\n"
                     + "    INNER JOIN `customer` \n"
-                    + "        ON (`invoice`.`CustomerID` = `customer`.`CustomerID`) where `user`.`id` =" + new LoginUser().getUser().getId() + "   and  ORDER BY `invoice`.`InvoiceID` ASC ";
+                    + "        ON (`invoice`.`CustomerID` = `customer`.`CustomerID`) where `user`.`id` =" + new LoginUser().getUser().getId() + "   and  ORDER BY `invoice`.`InvoiceID` DESC ";
             getDBConn();
             Statement st = getCon().createStatement();
             ResultSet rs = st.executeQuery(query);

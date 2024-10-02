@@ -29,7 +29,6 @@ public class EncryptPassword {
         for (byte b : hashInBytes) {
             sb.append(String.format("%02x", b));
         }
-//        System.out.println(sb.toString());
         this.password = sb.toString();
         return sb.toString();
     }
@@ -38,14 +37,6 @@ public class EncryptPassword {
         return password;
     }
     
-//    public static void main(String[] args) {
-//        try {
-//            String pass = new EncryptPassword("USER").toString();
-//            
-//            System.out.print("USER:" + pass);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
     
 }
