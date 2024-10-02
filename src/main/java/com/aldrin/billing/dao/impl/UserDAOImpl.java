@@ -20,18 +20,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import lombok.Getter;
-import lombok.Setter;
+
 
 /**
  *
  * @author ALDRIN B. C.
  */
-@Setter
-@Getter
+
 public class UserDAOImpl extends DBConnection implements UserDAO {
 
-    public ArrayList<ComboBoxList> list;
+    private ArrayList<ComboBoxList> list;
 
     @Override
     public void addUser(User user) {
@@ -339,6 +337,20 @@ public class UserDAOImpl extends DBConnection implements UserDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * @return the list
+     */
+    public ArrayList<ComboBoxList> getList() {
+        return list;
+    }
+
+    /**
+     * @param list the list to set
+     */
+    public void setList(ArrayList<ComboBoxList> list) {
+        this.list = list;
     }
 
 }

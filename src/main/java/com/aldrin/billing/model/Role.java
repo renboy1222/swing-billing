@@ -4,17 +4,13 @@
  */
 package com.aldrin.billing.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
 
 /**
  *
  * @author ALDRIN B. C.
  */
-@Setter
-@Getter
-@ToString
+
 public class Role {
 
     private Long id;
@@ -33,5 +29,61 @@ public class Role {
     public Role(Long id, String role) {
         this.id = id;
         this.role = role;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the deleted
+     */
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    /**
+     * @param deleted the deleted to set
+     */
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 }

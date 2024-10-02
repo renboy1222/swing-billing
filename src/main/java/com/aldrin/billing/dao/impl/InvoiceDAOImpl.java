@@ -14,18 +14,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+
 
 /**
  *
  * @author Java Programming with Aldrin
  */
-@Setter
-@Getter
+
 public class InvoiceDAOImpl extends DBConnection implements InvoiceDAO {
 
-    public ArrayList<ComboBoxList> list;
+    private ArrayList<ComboBoxList> list;
 
     @Override
     public void addInvoice(Invoice invoice) {
@@ -119,5 +117,19 @@ public class InvoiceDAOImpl extends DBConnection implements InvoiceDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * @return the list
+     */
+    public ArrayList<ComboBoxList> getList() {
+        return list;
+    }
+
+    /**
+     * @param list the list to set
+     */
+    public void setList(ArrayList<ComboBoxList> list) {
+        this.list = list;
     }
 }

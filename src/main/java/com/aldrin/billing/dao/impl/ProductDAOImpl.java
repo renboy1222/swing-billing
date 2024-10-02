@@ -16,15 +16,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import lombok.Getter;
-import lombok.Setter;
+
 
 /**
  *
  * @author ALDRIN B. C.
  */
-@Setter
-@Getter
+
 public class ProductDAOImpl extends DBConnection implements ProductDAO {
 
     private ArrayList<ComboBoxList> list;

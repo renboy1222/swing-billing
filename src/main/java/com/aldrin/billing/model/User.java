@@ -5,17 +5,13 @@
 package com.aldrin.billing.model;
 
 import com.aldrin.billing.util.EncryptPassword;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
 
 /**
  *
  * @author ALDRIN B. C.
  */
-@Setter
-@Getter
-@ToString
+
 public class User {
 
     private Long id;
@@ -48,6 +44,104 @@ public class User {
         }catch(Exception e){
             e.printStackTrace();
         }  
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the firstname
+     */
+    public String getFirstname() {
+        return firstname;
+    }
+
+    /**
+     * @param firstname the firstname to set
+     */
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    /**
+     * @return the surname
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * @param surname the surname to set
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the inActiveAt
+     */
+    public java.sql.Timestamp getInActiveAt() {
+        return inActiveAt;
+    }
+
+    /**
+     * @param inActiveAt the inActiveAt to set
+     */
+    public void setInActiveAt(java.sql.Timestamp inActiveAt) {
+        this.inActiveAt = inActiveAt;
+    }
+
+    /**
+     * @return the photo
+     */
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    /**
+     * @param photo the photo to set
+     */
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    /**
+     * @return the role
+     */
+    public Role getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 }

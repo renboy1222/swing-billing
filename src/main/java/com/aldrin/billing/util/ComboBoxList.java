@@ -6,15 +6,13 @@ package com.aldrin.billing.util;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import lombok.Getter;
-import lombok.Setter;
+
 
 /**
  *
  * @author ALDRIN B. C.
  */
-@Setter
-@Getter
+
 public class ComboBoxList {
     private Long id;
     private String name;
@@ -39,6 +37,48 @@ public class ComboBoxList {
     }
     
     public String toString(){
-        return this.name;
+        return this.getName();
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the timeStamp
+     */
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    /**
+     * @param timeStamp the timeStamp to set
+     */
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

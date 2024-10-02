@@ -4,8 +4,6 @@
  */
 package com.aldrin.billing.dao.impl;
 
-
-
 import com.aldrin.billing.dao.RoleDAO;
 import com.aldrin.billing.model.Role;
 import com.aldrin.billing.util.ComboBoxList;
@@ -13,17 +11,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
  * @author ALDRIN B. C.
  */
-@Setter
-@Getter
 public class RoleDAOImpl extends DBConnection implements RoleDAO {
+
+    private ArrayList<ComboBoxList> list;
 
     @Override
     public void addRole(Role role) {
@@ -58,7 +53,7 @@ public class RoleDAOImpl extends DBConnection implements RoleDAO {
 
     @Override
     public void deleteRole(Role role) {
-           try {
+        try {
             getDBConn();
             java.sql.PreparedStatement ps = getCon().prepareStatement("UPDATE ROLE SET DELETED =? WHERE ROLE.ID = ? ");
             ps.setBoolean(1, true);
@@ -71,11 +66,9 @@ public class RoleDAOImpl extends DBConnection implements RoleDAO {
         }
     }
 
-    public ArrayList<ComboBoxList> list;
-
     @Override
     public ArrayList<Role> selectRole() {
-            ArrayList<Role> list = new ArrayList<>();
+        ArrayList<Role> list = new ArrayList<>();
         try {
             String query = "SELECT * FROM ROLE WHERE ROLE.ACTIVE =TRUE  ORDER BY ROLE ASC ";
             getDBConn();
@@ -99,7 +92,7 @@ public class RoleDAOImpl extends DBConnection implements RoleDAO {
 
     @Override
     public void comboBoxRole() {
-    this.setList(new ArrayList<ComboBoxList>());
+        this.setList(new ArrayList<ComboBoxList>());
         try {
             getDBConn();
             PreparedStatement statement;
@@ -120,6 +113,18 @@ public class RoleDAOImpl extends DBConnection implements RoleDAO {
         }
     }
 
+    /**
+     * @return the list
+     */
+    public ArrayList<ComboBoxList> getList() {
+        return list;
+    }
 
+    /**
+     * @param list the list to set
+     */
+    public void setList(ArrayList<ComboBoxList> list) {
+        this.list = list;
+    }
 
 }

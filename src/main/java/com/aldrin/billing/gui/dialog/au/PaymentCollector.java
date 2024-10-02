@@ -5,15 +5,13 @@
 package com.aldrin.billing.gui.dialog.au;
 
 import com.aldrin.billing.model.Customer;
-import lombok.Getter;
-import lombok.Setter;
+
 
 /**
  *
  * @author Java Programming with Aldrin
  */
-@Setter
-@Getter
+
 public class PaymentCollector {
 
     private Float cash;
@@ -46,5 +44,61 @@ public class PaymentCollector {
      */
     public static void setPaymentCollector(PaymentCollector aPaymentCollector) {
         paymentCollector = aPaymentCollector;
+    }
+
+    /**
+     * @return the cash
+     */
+    public Float getCash() {
+        return cash;
+    }
+
+    /**
+     * @param cash the cash to set
+     */
+    public void setCash(Float cash) {
+        this.cash = cash;
+    }
+
+    /**
+     * @return the customer
+     */
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * @return the change
+     */
+    public Float getChange() {
+        return change;
+    }
+
+    /**
+     * @param change the change to set
+     */
+    public void setChange(Float change) {
+        this.change = change;
+    }
+
+    /**
+     * @return the total
+     */
+    public Float getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(Float total) {
+        this.total = total;
     }
 }
