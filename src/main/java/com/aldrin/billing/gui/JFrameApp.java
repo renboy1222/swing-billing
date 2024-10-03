@@ -4,7 +4,7 @@
  */
 package com.aldrin.billing.gui;
 
-import com.aldrin.billing.MassageBilling;
+import com.aldrin.billing.Billing;
 import com.aldrin.billing.dao.impl.UserDAOImpl;
 import com.aldrin.billing.gui.panel.JPanelReport;
 import com.aldrin.billing.gui.panel.JPanelProduct;
@@ -48,7 +48,7 @@ public class JFrameApp extends javax.swing.JFrame {
     LoginUser loginUser = new LoginUser();
     private static final String USERNAME_PREF_KEY = "username";
     private static final String PASSWORD_PREF_KEY = "password";
-    Preferences preferences = Preferences.userNodeForPackage(MassageBilling.class);
+    Preferences preferences = Preferences.userNodeForPackage(Billing.class);
 
     private CardLayout cardLayout = new CardLayout();
     private JPanel cardsPanel = new JPanel(cardLayout);

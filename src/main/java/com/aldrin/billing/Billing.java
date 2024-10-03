@@ -17,7 +17,7 @@ import javax.swing.UIManager;
  *
  * @author Java Programming with Aldrin
  */
-public class MassageBilling {
+public class Billing {
 
     public static void main(String[] args) {
 //        JFrame.setDefaultLookAndFeelDecorated(true);

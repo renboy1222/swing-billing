@@ -4,7 +4,7 @@
  */
 package com.aldrin.billing.gui.dialog.au;
 
-import com.aldrin.billing.MassageBilling;
+import com.aldrin.billing.Billing;
 import com.aldrin.billing.dao.impl.RoleDAOImpl;
 import com.aldrin.billing.dao.impl.UserDAOImpl;
 import com.aldrin.billing.gui.JFrameApp;
@@ -375,7 +375,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
                             RenderingHints.VALUE_ANTIALIAS_ON);
 
                     jLabelPicture.setIcon(new ImageIcon(resizedImage)); //to eliminate .jpeg from picture filename
-                    ImageIO.write(resizedImage, "png", new File(MassageBilling.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "\\images\\model.jpg"));
+                    ImageIO.write(resizedImage, "png", new File(Billing.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "\\images\\model.jpg"));
 
                 } catch (final IOException ex) {
 
@@ -433,7 +433,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
 
     private void validatePhoto() throws URISyntaxException {
         if (userAccount.getPhoto() == null) {
-            File targetClassesDir = new File(MassageBilling.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "\\images\\photo.jpg");
+            File targetClassesDir = new File(Billing.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "\\images\\photo.jpg");
             try {
                 FileInputStream fis = new FileInputStream(targetClassesDir);
                 byte[] imageData = new byte[(int) targetClassesDir.length()];
