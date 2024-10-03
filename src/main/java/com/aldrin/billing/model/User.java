@@ -23,6 +23,7 @@ public class User {
     private byte[] photo;
     
     private Role role;
+    private String updatePassword;
 
     public User() {
 
@@ -142,6 +143,20 @@ public class User {
      */
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    /**
+     * @return the updatePassword
+     */
+    public String getUpdatePassword() {
+        return updatePassword;
+    }
+
+    /**
+     * @param updatePassword the updatePassword to set
+     */
+    public void setUpdatePassword(String updatePassword) {
+        this.updatePassword = updatePassword;
     }
 
 }

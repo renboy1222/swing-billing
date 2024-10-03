@@ -56,17 +56,21 @@ public class UserDAOImpl extends DBConnection implements UserDAO {
             getDBConn();
             java.sql.PreparedStatement ps;
             if (user.getInActiveAt() != null) {
-                ps = getCon().prepareStatement("UPDATE USER SET FIRSTNAME =?, SURNAME =?, USERNAME=?, PASSWORD=?, ROLE_ID=?, PHOTO=? ,InActiveAt =? WHERE USER.ID = ?");
+                ps = getCon().prepareStatement("UPDATE USER SET InActiveAt =? WHERE USER.ID = ?");
+                ps.setTimestamp(1, user.getInActiveAt());
+                ps.setLong(2, user.getId());
+            }else if (user.getUpdatePassword().toString().length()==64) {
+                ps = getCon().prepareStatement("UPDATE USER SET FIRSTNAME =?, SURNAME =?, USERNAME=?, ROLE_ID=?, PHOTO=? ,InActiveAt =? WHERE USER.ID = ?");
                 ps.setString(1, user.getFirstname());
                 ps.setString(2, user.getSurname());
                 ps.setString(3, user.getUsername());
-                ps.setString(4, user.getPassword());
-                ps.setLong(5, user.getRole().getId());
-                ps.setBytes(6, user.getPhoto());
-                ps.setTimestamp(7, user.getInActiveAt());
-                ps.setLong(8, user.getId());
-            } else {
-                ps = getCon().prepareStatement("UPDATE USER SET FIRSTNAME =?, SURNAME =?, USERNAME=?, PASSWORD=?, ROLE_ID=?, PHOTO=?,InActiveAt =?  WHERE USER.ID = ?");
+                ps.setLong(4, user.getRole().getId());
+                ps.setBytes(5, user.getPhoto());
+                ps.setTimestamp(6, user.getInActiveAt());
+                ps.setLong(7, user.getId());
+            }  else {
+                user.setPassword(user.getUpdatePassword());
+                ps = getCon().prepareStatement("UPDATE USER SET FIRSTNAME =?, SURNAME =?, USERNAME=?, PASSWORD=?,  ROLE_ID=?, PHOTO=?,InActiveAt =?  WHERE USER.ID = ?");
                 ps.setString(1, user.getFirstname());
                 ps.setString(2, user.getSurname());
                 ps.setString(3, user.getUsername());

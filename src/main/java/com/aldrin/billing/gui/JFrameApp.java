@@ -60,7 +60,7 @@ public class JFrameApp extends javax.swing.JFrame {
      */
     public JFrameApp() {
         initComponents();
-        
+
         FlatLaf.updateUI();
         jMenuBar1.setVisible(false);
         FlatSVGIcon icon = new FlatSVGIcon("svg/billing_icon.svg", 24, 24);
@@ -559,7 +559,7 @@ public class JFrameApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemLogoutActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButtonDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDashboardActionPerformed
@@ -778,17 +778,20 @@ private void loginUser() {
                 cardsPanel.add(new JPanelUser(this), "User");
                 cardsPanel.add(new JPanelCustomer(this), "Customer");
 
-//                cardLayout.show(cardsPanel, "Dashboard");
-//                buttonSelected(jButtonDashboard);
                 jPanelContainer.add(cardsPanel, BorderLayout.CENTER);
                 jMenuApp.setText(loginUser.getUser().getSurname() + ", " + loginUser.getUser().getFirstname());
                 jMenuItemLogout.setVisible(true);
                 jMenuItemLogin.setVisible(false);
-//                jPanelSideBarButtons.setVisible(true);
                 jPanelSwitchButton.setVisible(true);
                 displayPicture(loginUser.getUser());
                 cardLayout.show(cardsPanel, "Dashboard");
                 buttonSelected(jButtonDashboard);
+                if (loginUser.getUser().getRole().getRole().equals("ADMIN")) {
+                    //for settings
+                    jButtonUser.setVisible(true);
+                } else {
+                    jButtonUser.setVisible(false);
+                }
                 jPanelContainer.setVisible(true);
             } else {
 //            logout
@@ -797,7 +800,6 @@ private void loginUser() {
                 jMenuItemLogout.setVisible(false);
                 jMenuSettings.setVisible(false);
                 jMenuItemLogin.setVisible(true);
-//                jPanelSideBarButtons.setVisible(false);
                 jPanelSwitchButton.setVisible(false);
                 jPanelContainer.setVisible(false);
 
@@ -838,7 +840,6 @@ private void loginUser() {
                     logInUser.setUser(user);
                     loginUser();
                     displayPicture(logInUser.getUser());
-//                    jPanelContainer.setVisible(true);
                     // login for jdialog
                 } else {
                     loginUser();
@@ -946,7 +947,7 @@ private void loginUser() {
             jButtonUser.setBackground(null);
             jButtonCustomer.setBackground(backgroundColor);
             jButtonUserAccount.setBackground(null);
-        }  else if (jButtonUserAccount == button) {
+        } else if (jButtonUserAccount == button) {
             jButtonDashboard.setBackground(null);
             jButtonBilling.setBackground(null);
             jButtonProduct.setBackground(null);
@@ -1000,7 +1001,7 @@ private void loginUser() {
             jButtonUser.setBackground(null);
             jButtonCustomer.setBackground(backgroundColor);
             jButtonUserAccount.setBackground(null);
-        }  else if (jButtonUserAccount == button) {
+        } else if (jButtonUserAccount == button) {
             jButtonDashboard.setBackground(null);
             jButtonBilling.setBackground(null);
             jButtonProduct.setBackground(null);
@@ -1032,10 +1033,10 @@ private void loginUser() {
         JMenuItem itemLogout = new JMenuItem("Logout");
         JMenuItem itemLogin = new JMenuItem("Login");
         JMenuItem itemExit = new JMenuItem("Exit");
-        itemChangePassword.setIcon(new FlatSVGIcon("svg/change_password.svg",20,20));
-        itemLogout.setIcon(new FlatSVGIcon("svg/logout.svg",20,20));
-        itemLogin.setIcon(new FlatSVGIcon("svg/login.svg",20,20));
-        itemExit.setIcon(new FlatSVGIcon("svg/close.svg",20,20));
+        itemChangePassword.setIcon(new FlatSVGIcon("svg/change_password.svg", 20, 20));
+        itemLogout.setIcon(new FlatSVGIcon("svg/logout.svg", 20, 20));
+        itemLogin.setIcon(new FlatSVGIcon("svg/login.svg", 20, 20));
+        itemExit.setIcon(new FlatSVGIcon("svg/close.svg", 20, 20));
         if (new LoginUser().getUser() == null) {
             popupMenu.add(itemLogin);
             popupMenu.add(jSeparatorUser);
@@ -1051,7 +1052,7 @@ private void loginUser() {
         itemChangePassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JDialogChangePassword changePassword = new JDialogChangePassword(jFrameApp,true);
+                JDialogChangePassword changePassword = new JDialogChangePassword(jFrameApp, true);
                 changePassword.setVisible(true);
             }
         });
@@ -1086,19 +1087,17 @@ private void loginUser() {
             if (logout == true) {
                 jPanelSideBarButtons.removeAll();
                 jPanelSideBarButtons.add(jButtonLogin);
-                
+
             } else {
                 jPanelSideBarButtons.removeAll();
-                jButtonUserAccount.setText(new LoginUser().getUser().getSurname()+", "+new LoginUser().getUser().getFirstname());
+                jButtonUserAccount.setText(new LoginUser().getUser().getSurname() + ", " + new LoginUser().getUser().getFirstname());
                 jPanelSideBarButtons.add(jButtonDashboard);
                 jPanelSideBarButtons.add(jButtonBilling);
                 jPanelSideBarButtons.add(jButtonReports);
                 jPanelSideBarButtons.add(jButtonProduct);
                 jPanelSideBarButtons.add(jButtonCustomer);
                 jPanelSideBarButtons.add(jButtonUser);
-                if (loginUser.getUser().getRole().getRole().equals("ADMIN")) {
-                  //for settings
-                }
+
                 jPanelSideBarButtons.add(jButtonUserAccount);
             }
             jPanel4.updateUI();

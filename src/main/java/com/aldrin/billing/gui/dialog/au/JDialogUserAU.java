@@ -44,7 +44,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
     /**
      * Creates new form JDialogStudent
      */
-    private User userAccount = new User();
+    private User user = new User();
     static String title = "";
 
     public JDialogUserAU(JFrameApp jFrameSariPOS, boolean modal) {
@@ -69,7 +69,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
         super(jFrameCafSys, modal);
         initComponents();
         setTitle("Update user account");
-        this.userAccount = userAccount;
+        this.user = userAccount;
         this.title = title;
         getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_BACKGROUND, new Color(187, 187, 187));
         jTextFieldFirstname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "First name");
@@ -80,7 +80,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jTextFieldFirstname.setText(userAccount.getFirstname());
         jTextFieldSurname.setText(userAccount.getSurname());
         jTextFieldUsername.setText(userAccount.getUsername());
-//        jTextFieldPassword.setText(userAccount.getPassword());
+        jPasswordFieldPassword.setText(userAccount.getPassword());
         if (userAccount.getInActiveAt() == null) {
             jCheckBoxActive.setSelected(true);
         } else {
@@ -100,7 +100,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
         super(jFrameCafSys, modal);
         initComponents();
         setTitle("Delete user account");
-        this.userAccount = userAccount;
+        this.user = userAccount;
         this.title = title;
         getRootPane().putClientProperty(FlatClientProperties.TITLE_BAR_BACKGROUND, new Color(187, 187, 187));
         jTextFieldFirstname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "FIRST NAME");
@@ -256,55 +256,56 @@ public class JDialogUserAU extends javax.swing.JDialog {
         if (this.title.equals("New")) {
             int response = JOptionPane.showConfirmDialog(jFrameCafSys, "Are you sure to save " + jTextFieldFirstname.getText() + " " + jTextFieldSurname.getText() + " ?", "Save confirmation", JOptionPane.YES_NO_OPTION);
             if (response == JOptionPane.YES_OPTION) {
-                this.userAccount.setFirstname(jTextFieldFirstname.getText());
-                this.userAccount.setSurname(jTextFieldSurname.getText());
-                this.userAccount.setUsername(jTextFieldUsername.getText());
-                this.userAccount.setPassword(jPasswordFieldPassword.getText());
+                this.user.setFirstname(jTextFieldFirstname.getText());
+                this.user.setSurname(jTextFieldSurname.getText());
+                this.user.setUsername(jTextFieldUsername.getText());
+                this.user.setPassword(jPasswordFieldPassword.getText());
                 if (jCheckBoxActive.isSelected() == true) {
-                    userAccount.setInActiveAt(null);
+                    user.setInActiveAt(null);
                 } else {
-                    userAccount.setInActiveAt(new Timestamp(new Date().getTime()));
+                    user.setInActiveAt(new Timestamp(new Date().getTime()));
                 }
                 ComboBoxList roleId = (ComboBoxList) this.jComboBoxRole.getSelectedItem();
                 Role role = new Role();
                 role.setId(roleId.getId());
-                this.userAccount.setRole(role);
+                this.user.setRole(role);
                 try {
                     validatePhoto();
                 } catch (URISyntaxException ex) {
                     Logger.getLogger(JDialogUserAU.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                studentDAOImpl.addUser(userAccount);
+                studentDAOImpl.addUser(user);
+                
                 this.dispose();
             }
         } else if (this.title.equals("Update")) {
             int response = JOptionPane.showConfirmDialog(jFrameCafSys, "Are you sure to update " + jTextFieldFirstname.getText() + " " + jTextFieldSurname.getText() + " ?", "Save confirmation", JOptionPane.YES_NO_OPTION);
             if (response == JOptionPane.YES_OPTION) {
-                this.userAccount.setFirstname(jTextFieldFirstname.getText());
-                this.userAccount.setSurname(jTextFieldSurname.getText());
-                this.userAccount.setUsername(jTextFieldUsername.getText());
-                this.userAccount.setPassword(jPasswordFieldPassword.getText());
+                this.user.setFirstname(jTextFieldFirstname.getText());
+                this.user.setSurname(jTextFieldSurname.getText());
+                this.user.setUsername(jTextFieldUsername.getText());
+                this.user.setUpdatePassword(jPasswordFieldPassword.getText());
                 if (jCheckBoxActive.isSelected() == true) {
-                    userAccount.setInActiveAt(null);
+                    user.setInActiveAt(null);
                 } else {
-                    userAccount.setInActiveAt(new Timestamp(new Date().getTime()));
+                    user.setInActiveAt(new Timestamp(new Date().getTime()));
                 }
                 ComboBoxList roleId = (ComboBoxList) this.jComboBoxRole.getSelectedItem();
                 Role role = new Role();
                 role.setId(roleId.getId());
-                this.userAccount.setRole(role);
+                this.user.setRole(role);
                 try {
                     validatePhoto();
                 } catch (URISyntaxException ex) {
                     Logger.getLogger(JDialogUserAU.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                studentDAOImpl.updateUser(userAccount);
+                studentDAOImpl.updateUser(user);
                 this.dispose();
             }
         } else if (this.title.equals("Delete")) {
             int response = JOptionPane.showConfirmDialog(jFrameCafSys, "Are you sure to delete " + jTextFieldFirstname.getText() + " " + jTextFieldSurname.getText() + " ?", "Save confirmation", JOptionPane.YES_NO_OPTION);
             if (response == JOptionPane.YES_OPTION) {
-                studentDAOImpl.deleteUser(userAccount);
+                studentDAOImpl.deleteUser(user);
                 this.dispose();
             }
         }
@@ -394,7 +395,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
             try (FileInputStream fis = new FileInputStream(file)) {
                 byte[] imageData = new byte[(int) file.length()];
                 fis.read(imageData);
-                userAccount.setPhoto(imageData);
+                user.setPhoto(imageData);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -432,13 +433,13 @@ public class JDialogUserAU extends javax.swing.JDialog {
     }
 
     private void validatePhoto() throws URISyntaxException {
-        if (userAccount.getPhoto() == null) {
+        if (user.getPhoto() == null) {
             File targetClassesDir = new File(Billing.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "\\images\\photo.jpg");
             try {
                 FileInputStream fis = new FileInputStream(targetClassesDir);
                 byte[] imageData = new byte[(int) targetClassesDir.length()];
                 fis.read(imageData);
-                userAccount.setPhoto(imageData);
+                user.setPhoto(imageData);
             } catch (Exception e) {
                 System.out.println("default of no photo is error");
             }
