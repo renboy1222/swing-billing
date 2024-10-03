@@ -56,7 +56,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jTextFieldFirstname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "FIRST NAME");
         jTextFieldSurname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "SURNAME");
         jTextFieldUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "USERNAME");
-        jTextFieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "PASSWORD");
+        jPasswordFieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "PASSWORD");
         comboBoxUserAccount();
         jCheckBoxActive.setSelected(true);
         jButton1.setIcon(new FlatSVGIcon("svg/save.svg", 24, 24));
@@ -75,12 +75,12 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jTextFieldFirstname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "First name");
         jTextFieldSurname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Surname");
         jTextFieldUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Username");
-        jTextFieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password");
+        jPasswordFieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password");
         comboBoxUserAccount();
         jTextFieldFirstname.setText(userAccount.getFirstname());
         jTextFieldSurname.setText(userAccount.getSurname());
         jTextFieldUsername.setText(userAccount.getUsername());
-        jTextFieldPassword.setText(userAccount.getPassword());
+//        jTextFieldPassword.setText(userAccount.getPassword());
         if (userAccount.getInActiveAt() == null) {
             jCheckBoxActive.setSelected(true);
         } else {
@@ -106,12 +106,12 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jTextFieldFirstname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "FIRST NAME");
         jTextFieldSurname.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "SURNAME");
         jTextFieldUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "USERNAME");
-        jTextFieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "PASSWORD");
+        jPasswordFieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "PASSWORD");
         comboBoxUserAccount();
         jTextFieldFirstname.setText(userAccount.getFirstname());
         jTextFieldSurname.setText(userAccount.getSurname());
         jTextFieldUsername.setText(userAccount.getUsername());
-        jTextFieldPassword.setText(userAccount.getPassword());
+        jPasswordFieldPassword.setText(userAccount.getPassword());
         if (userAccount.getInActiveAt() == null) {
             jCheckBoxActive.setSelected(true);
         } else {
@@ -145,7 +145,6 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jComboBoxRole = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldPassword = new javax.swing.JTextField();
         jCheckBoxActive = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -153,6 +152,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jLabelPicture = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTextFieldUsername = new javax.swing.JTextField();
+        jPasswordFieldPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Student");
@@ -192,10 +192,6 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("PASSWORD");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 220, 20));
-
-        jTextFieldPassword.setMinimumSize(new java.awt.Dimension(64, 32));
-        jTextFieldPassword.setPreferredSize(new java.awt.Dimension(64, 25));
-        jPanel4.add(jTextFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 228, 220, -1));
 
         jCheckBoxActive.setText("ACTIVE");
         jPanel4.add(jCheckBoxActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 220, 30));
@@ -245,6 +241,9 @@ public class JDialogUserAU extends javax.swing.JDialog {
         jTextFieldUsername.setPreferredSize(new java.awt.Dimension(64, 25));
         jPanel4.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 220, -1));
 
+        jPasswordFieldPassword.setPreferredSize(new java.awt.Dimension(64, 25));
+        jPanel4.add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, -1));
+
         jPanel5.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -260,7 +259,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
                 this.userAccount.setFirstname(jTextFieldFirstname.getText());
                 this.userAccount.setSurname(jTextFieldSurname.getText());
                 this.userAccount.setUsername(jTextFieldUsername.getText());
-                this.userAccount.setPassword(jTextFieldPassword.getText());
+                this.userAccount.setPassword(jPasswordFieldPassword.getText());
                 if (jCheckBoxActive.isSelected() == true) {
                     userAccount.setInActiveAt(null);
                 } else {
@@ -284,7 +283,7 @@ public class JDialogUserAU extends javax.swing.JDialog {
                 this.userAccount.setFirstname(jTextFieldFirstname.getText());
                 this.userAccount.setSurname(jTextFieldSurname.getText());
                 this.userAccount.setUsername(jTextFieldUsername.getText());
-                this.userAccount.setPassword(jTextFieldPassword.getText());
+                this.userAccount.setPassword(jPasswordFieldPassword.getText());
                 if (jCheckBoxActive.isSelected() == true) {
                     userAccount.setInActiveAt(null);
                 } else {
@@ -333,8 +332,8 @@ public class JDialogUserAU extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JTextField jTextFieldFirstname;
-    private javax.swing.JTextField jTextFieldPassword;
     private javax.swing.JTextField jTextFieldSurname;
     private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables

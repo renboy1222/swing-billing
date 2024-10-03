@@ -6,17 +6,19 @@ package com.aldrin.billing.util;
 
 import com.aldrin.billing.model.User;
 
-
 /**
  *
  * @author Java Programming with Aldrin
  */
-
 public class LoginUser {
-    
+
     private static String password;
-    
+
     private static User user;
+
+    public LoginUser() {
+        getUser();
+    }
 
     /**
      * @return the user
